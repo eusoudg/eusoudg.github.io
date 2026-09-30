@@ -1,573 +1,631 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="dark">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diogo (DG) | Developer Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diogo | eusoudg</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Press+Start+2P&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0d1117;
+      --card-bg: #161b22;
+      --border-color: #30363d;
+      --accent-cyan: #38bdf8;
+      --accent-purple: #c084fc;
+      --accent-green: #4ade80;
+      --accent-pink: #f472b6;
+      --text-main: #c9d1d9;
+      --text-muted: #8b949e;
+      --heading-color: #f0f6fc;
+      --font-code: 'Fira Code', monospace;
+      --font-pixel: 'Press Start 2P', cursive;
+      --font-sans: 'Inter', sans-serif;
+    }
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        dracula: {
-                            bg: '#282a36',
-                            card: '#44475a',
-                            fg: '#f8f8f2',
-                            comment: '#6272a4',
-                            cyan: '#8be9fd',
-                            green: '#50fa7b',
-                            orange: '#ffb86c',
-                            pink: '#ff79c6',
-                            purple: '#bd93f9',
-                            red: '#ff5555',
-                            yellow: '#f1fa8c'
-                        }
-                    },
-                    fontFamily: {
-                        pixel: ['"Press Start 2P"', 'cursive'],
-                        code: ['"Fira Code"', 'monospace'],
-                        sans: ['Inter', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@300;400;600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      padding-bottom: 60px;
+      overflow-x: hidden;
+    }
 
-    <style>
-        /* Custom retro scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #282a36;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #6272a4;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #bd93f9;
-        }
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-        /* Scanline retro effect overlay */
-        .scanlines {
-            background: linear-gradient(
-                rgba(18, 16, 16, 0) 50%, 
-                rgba(0, 0, 0, 0.25) 50%
-            );
-            background-size: 100% 4px;
-            pointer-events: none;
-        }
+    /* Header & Nav */
+    header {
+      background-color: rgba(22, 27, 34, 0.85);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border-color);
+      padding: 15px 0;
+    }
 
-        /* Pixel art border style */
-        .pixel-box {
-            box-shadow: 
-                0 -4px 0 -2px #44475a,
-                0 4px 0 -2px #44475a,
-                -4px 0 0 -2px #44475a,
-                4px 0 0 -2px #44475a,
-                0 0 0 4px #282a36,
-                0 8px 16px rgba(0,0,0,0.4);
-        }
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        .pixel-btn {
-            box-shadow: 0 4px 0 #1e1f29;
-            transition: all 0.1s ease;
-        }
-        .pixel-btn:active {
-            transform: translateY(4px);
-            box-shadow: 0 0 0 #1e1f29;
-        }
+    .logo {
+      font-family: var(--font-pixel);
+      font-size: 0.9rem;
+      color: var(--accent-cyan);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        /* Smooth page scroll */
-        html {
-            scroll-behavior: smooth;
-        }
+    .logo span {
+      color: var(--accent-pink);
+    }
 
-        /* Typing cursor animation */
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-        .animate-blink {
-            animation: blink 0.8s infinite;
-        }
-    </style>
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-code);
+      font-size: 0.85rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-cyan);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 60px 0 40px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .pixel-avatar-wrapper {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      flex-shrink: 0;
+    }
+
+    .pixel-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      border: 3px solid var(--accent-cyan);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+      object-fit: cover;
+      background: #222;
+    }
+
+    .status-badge {
+      position: absolute;
+      bottom: -8px;
+      right: -8px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 0.7rem;
+      font-family: var(--font-code);
+      color: var(--accent-green);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent-green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    .title-tag {
+      font-family: var(--font-code);
+      color: var(--accent-purple);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: var(--heading-color);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .typewriter-text {
+      font-family: var(--font-code);
+      color: var(--accent-cyan);
+      font-size: 1.1rem;
+      min-height: 1.6em;
+    }
+
+    .quote-box {
+      margin-top: 18px;
+      padding: 12px 16px;
+      background-color: var(--card-bg);
+      border-left: 3px solid var(--accent-pink);
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Section Global */
+    section {
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .section-title {
+      font-family: var(--font-pixel);
+      font-size: 1rem;
+      color: var(--heading-color);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-color);
+    }
+
+    /* Terminal Section */
+    .terminal-card {
+      background-color: #090d12;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .terminal-header {
+      background-color: var(--card-bg);
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .btn-circle {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .btn-red { background: #ff5f56; }
+    .btn-yellow { background: #ffbd2e; }
+    .btn-green { background: #27c93f; }
+
+    .terminal-title {
+      margin-left: Auto;
+      margin-right: auto;
+      font-family: var(--font-code);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .terminal-body {
+      padding: 20px;
+      font-family: var(--font-code);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .term-line {
+      margin-bottom: 10px;
+    }
+
+    .term-prompt {
+      color: var(--accent-green);
+    }
+
+    .term-path {
+      color: var(--accent-purple);
+    }
+
+    .term-cmd {
+      color: var(--heading-color);
+    }
+
+    .term-out {
+      color: var(--text-main);
+      padding-left: 15px;
+    }
+
+    .term-list {
+      list-style: none;
+      padding-left: 25px;
+    }
+
+    .term-list li::before {
+      content: "➔ ";
+      color: var(--accent-cyan);
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 15px;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-cyan);
+    }
+
+    .skill-icon {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .skill-name {
+      font-family: var(--font-code);
+      font-size: 0.85rem;
+      color: var(--heading-color);
+    }
+
+    /* Projects Cards */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.2s ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent-purple);
+    }
+
+    .project-title {
+      font-size: 1.1rem;
+      color: var(--heading-color);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-family: var(--font-code);
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    /* Contribution Snake Section */
+    .snake-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      overflow-x: auto;
+    }
+
+    .snake-box img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Footer */
+    footer {
+      padding-top: 40px;
+      text-align: center;
+      font-family: var(--font-code);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 15px;
+    }
+
+    .social-links a {
+      color: var(--heading-color);
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: color 0.2s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--accent-pink);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .nav-links {
+        gap: 12px;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
 </head>
-<body class="bg-dracula-bg text-dracula-fg font-sans antialiased min-h-screen selection:bg-dracula-pink selection:text-dracula-bg relative">
+<body>
 
-    <!-- Retro Overlay Effect (Toggleable) -->
-    <div id="scanlineOverlay" class="scanlines fixed inset-0 z-50 pointer-events-none opacity-40"></div>
+  <!-- Header / Navigation -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="logo">&lt;eusoudg <span>/&gt;</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">// sobre</a></li>
+        <li><a href="#skills">// skills</a></li>
+        <li><a href="#projects">// projetos</a></li>
+        <li><a href="#activity">// atividade</a></li>
+      </ul>
+    </div>
+  </header>
 
-    <header class="sticky top-0 z-40 bg-dracula-bg/90 backdrop-blur border-b border-dracula-card">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-            <a href="#hero" class="flex items-center gap-3 font-pixel text-xs text-dracula-green hover:text-dracula-pink transition">
-                <span class="text-dracula-purple">&gt;</span> eusoudg<span class="animate-blink text-dracula-yellow">_</span>
-            </a>
+  <main class="container">
 
-            <!-- Navigation Links -->
-            <nav class="hidden md:flex items-center gap-6 font-code text-sm font-semibold">
-                <a href="#about" class="text-dracula-fg hover:text-dracula-cyan transition flex items-center gap-1">
-                    <i data-lucide="user" class="w-4 h-4 text-dracula-purple"></i> Sobre
-                </a>
-                <a href="#skills" class="text-dracula-fg hover:text-dracula-cyan transition flex items-center gap-1">
-                    <i data-lucide="code-2" class="w-4 h-4 text-dracula-green"></i> Skills
-                </a>
-                <a href="#projects" class="text-dracula-fg hover:text-dracula-cyan transition flex items-center gap-1">
-                    <i data-lucide="folder-git-2" class="w-4 h-4 text-dracula-pink"></i> Projetos
-                </a>
-                <a href="#terminal" class="text-dracula-fg hover:text-dracula-cyan transition flex items-center gap-1">
-                    <i data-lucide="terminal" class="w-4 h-4 text-dracula-yellow"></i> Terminal
-                </a>
-            </nav>
-
-            <!-- Quick Action Buttons -->
-            <div class="flex items-center gap-2">
-                <button id="toggleScanlines" class="p-2 text-xs bg-dracula-card hover:bg-dracula-comment rounded border border-dracula-comment transition" title="Alternar Efeito Retro CRT">
-                    <i data-lucide="tv" class="w-4 h-4 text-dracula-cyan"></i>
-                </button>
-                <a href="https://github.com/eusoudg" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 text-xs font-code font-semibold bg-dracula-purple text-dracula-bg rounded hover:bg-dracula-pink transition flex items-center gap-2 pixel-btn">
-                    <i data-lucide="github" class="w-4 h-4"></i> GitHub
-                </a>
-            </div>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="title-tag">console.log("Olá, mundo!");</div>
+        <h1>Diogo Ryan</h1>
+        <div class="typewriter-text" id="typewriter"></div>
+        <div class="quote-box">
+          "Conhecereis a verdade, e a verdade vos libertará." — João 8:32
         </div>
-    </header>
-
-    <main class="max-w-5xl mx-auto px-4 py-8 space-y-16">
-
-        <section id="hero" class="pt-8 pb-4">
-            <div class="bg-dracula-card/60 border-2 border-dracula-purple/40 rounded-2xl p-6 md:p-10 relative overflow-hidden backdrop-blur">
-                <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-8">
-                    <!-- Text Info -->
-                    <div class="space-y-4 max-w-xl text-center md:text-left">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-dracula-purple/20 text-dracula-purple border border-dracula-purple/30 text-xs font-code">
-                            <span class="w-2 h-2 rounded-full bg-dracula-green animate-pulse"></span>
-                            Pronto para aprender & criar
-                        </div>
-
-                        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">
-                            Opa! Eu sou o <span class="text-transparent bg-clip-text bg-gradient-to-r from-dracula-pink via-dracula-purple to-dracula-cyan">Diogo (DG)</span> 👋
-                        </h1>
-
-                        <!-- Typewriter animated subtitle -->
-                        <div class="font-code text-dracula-cyan text-sm md:text-base h-6 flex items-center justify-center md:justify-start gap-1">
-                            <span>$</span>
-                            <span id="typewriterText"></span>
-                            <span class="w-2 h-4 bg-dracula-cyan animate-blink"></span>
-                        </div>
-
-                        <!-- Quote -->
-                        <blockquote class="italic text-dracula-comment border-l-2 border-dracula-pink pl-4 py-1 text-sm bg-dracula-bg/40 rounded-r">
-                            "Conhecereis a verdade, e a verdade vos libertará" <span class="text-xs text-dracula-purple font-code">(João 8:32)</span>
-                        </blockquote>
-
-                        <div class="pt-2 flex flex-wrap gap-3 justify-center md:justify-start">
-                            <a href="#projects" class="px-5 py-2.5 bg-dracula-green text-dracula-bg font-code font-bold text-sm rounded-lg hover:bg-opacity-90 transition pixel-btn flex items-center gap-2">
-                                <i data-lucide="layout-grid" class="w-4 h-4"></i> Ver Projetos
-                            </a>
-                            <a href="#terminal" class="px-5 py-2.5 bg-dracula-bg text-dracula-fg border border-dracula-comment font-code text-sm rounded-lg hover:border-dracula-cyan transition flex items-center gap-2">
-                                <i data-lucide="terminal" class="w-4 h-4 text-dracula-yellow"></i> Abrir Terminal
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Scott Pilgrim Gif & Frame -->
-                    <div class="relative group">
-                        <div class="absolute -inset-1 bg-gradient-to-r from-dracula-pink to-dracula-purple rounded-2xl blur opacity-50 group-hover:opacity-80 transition duration-500"></div>
-                        <div class="relative bg-dracula-bg border-2 border-dracula-purple rounded-xl p-4 flex flex-col items-center justify-center">
-                            <img src="https://github.com/user-attachments/assets/effc35e5-685e-4a96-a33d-99353fb4ab7d" 
-                                 alt="Scott Pilgrim Pixel Art" 
-                                 class="w-36 h-36 md:w-44 md:h-44 object-contain image-rendering-pixelated transform group-hover:scale-105 transition duration-300"
-                                 onerror="this.src='https://placehold.co/180x180/282a36/50fa7b?text=Scott+Pilgrim'">
-                            <span class="mt-2 text-[10px] font-pixel text-dracula-yellow uppercase tracking-widest bg-dracula-card px-2 py-0.5 rounded border border-dracula-comment">
-                                Level 1 Dev
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="space-y-6">
-            <div class="flex items-center gap-3 border-b border-dracula-card pb-3">
-                <i data-lucide="user" class="w-6 h-6 text-dracula-purple"></i>
-                <h2 class="text-2xl font-bold font-code text-dracula-fg">Sobre Mim & Interesses</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Bio Card -->
-                <div class="md:col-span-2 bg-dracula-card/50 border border-dracula-card rounded-xl p-6 space-y-4">
-                    <h3 class="text-lg font-bold text-dracula-green flex items-center gap-2">
-                        <i data-lucide="graduation-cap" class="w-5 h-5"></i> Estudante & Apaixonado por Tecnologia
-                    </h3>
-                    <p class="text-dracula-fg/90 leading-relaxed text-sm md:text-base">
-                        Sou estudante do Ensino Técnico/Médio focado em Ciência da Computação. O meu objetivo no mundo do desenvolvimento é entender a fundo a lógica da programação — desde o gerenciamento de memória em baixos níveis com **C**, até a construção de autômatos e automações poderosas com **Python** e interfaces web modernas.
-                    </p>
-
-                    <div class="pt-2 flex flex-wrap gap-2 font-code text-xs">
-                        <span class="px-3 py-1 bg-dracula-bg border border-dracula-purple/50 rounded-full text-dracula-purple">🎓 Estudante de TI</span>
-                        <span class="px-3 py-1 bg-dracula-bg border border-dracula-cyan/50 rounded-full text-dracula-cyan">📖 Leitor</span>
-                        <span class="px-3 py-1 bg-dracula-bg border border-dracula-yellow/50 rounded-full text-dracula-yellow">🎮 Gamer Retro</span>
-                    </div>
-                </div>
-
-                <!-- Interests Quick Cards -->
-                <div class="space-y-4">
-                    <div class="bg-dracula-card/50 border border-dracula-card rounded-xl p-4 flex items-start gap-4">
-                        <div class="p-3 bg-dracula-purple/20 text-dracula-purple rounded-lg">
-                            <i data-lucide="brain-circuit" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-sm text-dracula-fg">Lógica & Algoritmos</h4>
-                            <p class="text-xs text-dracula-comment mt-1">Interesse em resolução de problemas e olimpíadas científicas.</p>
-                        </div>
-                    </div>
-
-                    <div class="bg-dracula-card/50 border border-dracula-card rounded-xl p-4 flex items-start gap-4">
-                        <div class="p-3 bg-dracula-pink/20 text-dracula-pink rounded-lg">
-                            <i data-lucide="swords" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-sm text-dracula-fg">Scott Pilgrim Aesthetic</h4>
-                            <p class="text-xs text-dracula-comment mt-1">Fã da estética 8-bit/pixel art, bandas indies e visual retrô.</p>
-                        </div>
-                    </div>
-
-                    <div class="bg-dracula-card/50 border border-dracula-card rounded-xl p-4 flex items-start gap-4">
-                        <div class="p-3 bg-dracula-yellow/20 text-dracula-yellow rounded-lg">
-                            <i data-lucide="book-open" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-sm text-dracula-fg">Leitura & Filosofia</h4>
-                            <p class="text-xs text-dracula-comment mt-1">Buscando conhecimento e reflexão constante.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills" class="space-y-6">
-            <div class="flex items-center justify-between border-b border-dracula-card pb-3">
-                <div class="flex items-center gap-3">
-                    <i data-lucide="code-2" class="w-6 h-6 text-dracula-green"></i>
-                    <h2 class="text-2xl font-bold font-code text-dracula-fg">Tecnologias & Skills</h2>
-                </div>
-                <!-- Filter Buttons -->
-                <div class="flex gap-2 font-code text-xs" id="skillFilters">
-                    <button data-filter="all" class="px-2.5 py-1 bg-dracula-purple text-dracula-bg rounded font-semibold transition filter-btn">Todas</button>
-                    <button data-filter="lang" class="px-2.5 py-1 bg-dracula-bg text-dracula-comment hover:text-dracula-fg border border-dracula-card rounded transition filter-btn">Linguagens</button>
-                    <button data-filter="tool" class="px-2.5 py-1 bg-dracula-bg text-dracula-comment hover:text-dracula-fg border border-dracula-card rounded transition filter-btn">Ferramentas</button>
-                </div>
-            </div>
-
-            <!-- Skills Grid -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4" id="skillsGrid">
-
-                <!-- Python -->
-                <div class="skill-card lang bg-dracula-card/40 border border-dracula-card hover:border-dracula-yellow p-4 rounded-xl text-center space-y-2 transition group">
-                    <div class="w-12 h-12 mx-auto flex items-center justify-center bg-dracula-bg rounded-lg group-hover:scale-110 transition">
-                        <span class="font-code font-bold text-dracula-yellow text-xl">Py</span>
-                    </div>
-                    <h4 class="font-bold text-sm text-dracula-fg">Python</h4>
-                    <span class="inline-block text-[10px] font-code text-dracula-green bg-dracula-green/10 px-2 py-0.5 rounded">Avançando</span>
-                </div>
-
-                <!-- C -->
-                <div class="skill-card lang bg-dracula-card/40 border border-dracula-card hover:border-dracula-cyan p-4 rounded-xl text-center space-y-2 transition group">
-                    <div class="w-12 h-12 mx-auto flex items-center justify-center bg-dracula-bg rounded-lg group-hover:scale-110 transition">
-                        <span class="font-code font-bold text-dracula-cyan text-xl">C</span>
-                    </div>
-                    <h4 class="font-bold text-sm text-dracula-fg">Linguagem C</h4>
-                    <span class="inline-block text-[10px] font-code text-dracula-cyan bg-dracula-cyan/10 px-2 py-0.5 rounded">Estruturas</span>
-                </div>
-
-                <!-- HTML5 -->
-                <div class="skill-card lang bg-dracula-card/40 border border-dracula-card hover:border-dracula-orange p-4 rounded-xl text-center space-y-2 transition group">
-                    <div class="w-12 h-12 mx-auto flex items-center justify-center bg-dracula-bg rounded-lg group-hover:scale-110 transition">
-                        <span class="font-code font-bold text-dracula-orange text-xl">H5</span>
-                    </div>
-                    <h4 class="font-bold text-sm text-dracula-fg">HTML5</h4>
-                    <span class="inline-block text-[10px] font-code text-dracula-orange bg-dracula-orange/10 px-2 py-0.5 rounded">Web Base</span>
-                </div>
-
-                <!-- Git -->
-                <div class="skill-card tool bg-dracula-card/40 border border-dracula-card hover:border-dracula-red p-4 rounded-xl text-center space-y-2 transition group">
-                    <div class="w-12 h-12 mx-auto flex items-center justify-center bg-dracula-bg rounded-lg group-hover:scale-110 transition">
-                        <i data-lucide="git-branch" class="w-6 h-6 text-dracula-red"></i>
-                    </div>
-                    <h4 class="font-bold text-sm text-dracula-fg">Git</h4>
-                    <span class="inline-block text-[10px] font-code text-dracula-red bg-dracula-red/10 px-2 py-0.5 rounded">Versionamento</span>
-                </div>
-
-                <!-- GitHub -->
-                <div class="skill-card tool bg-dracula-card/40 border border-dracula-card hover:border-dracula-purple p-4 rounded-xl text-center space-y-2 transition group">
-                    <div class="w-12 h-12 mx-auto flex items-center justify-center bg-dracula-bg rounded-lg group-hover:scale-110 transition">
-                        <i data-lucide="github" class="w-6 h-6 text-dracula-purple"></i>
-                    </div>
-                    <h4 class="font-bold text-sm text-dracula-fg">GitHub</h4>
-                    <span class="inline-block text-[10px] font-code text-dracula-purple bg-dracula-purple/10 px-2 py-0.5 rounded">Profile & Actions</span>
-                </div>
-
-                <!-- VS Code -->
-                <div class="skill-card tool bg-dracula-card/40 border border-dracula-card hover:border-dracula-cyan p-4 rounded-xl text-center space-y-2 transition group">
-                    <div class="w-12 h-12 mx-auto flex items-center justify-center bg-dracula-bg rounded-lg group-hover:scale-110 transition">
-                        <i data-lucide="code" class="w-6 h-6 text-dracula-cyan"></i>
-                    </div>
-                    <h4 class="font-bold text-sm text-dracula-fg">VS Code</h4>
-                    <span class="inline-block text-[10px] font-code text-dracula-cyan bg-dracula-cyan/10 px-2 py-0.5 rounded">IDE Principal</span>
-                </div>
-
-            </div>
-        </section>
-
-        <section id="projects" class="space-y-6">
-            <div class="flex items-center gap-3 border-b border-dracula-card pb-3">
-                <i data-lucide="folder-git-2" class="w-6 h-6 text-dracula-pink"></i>
-                <h2 class="text-2xl font-bold font-code text-dracula-fg">Projetos em Destaque</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-                <!-- Project 1: StudyQuest -->
-                <div class="bg-dracula-card/40 border border-dracula-card hover:border-dracula-purple rounded-xl overflow-hidden flex flex-col justify-between transition group">
-                    <div class="p-6 space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-code text-dracula-purple bg-dracula-purple/10 px-2.5 py-1 rounded-md border border-dracula-purple/30">Educação & Olímpico</span>
-                            <i data-lucide="sparkles" class="w-5 h-5 text-dracula-yellow"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-dracula-fg group-hover:text-dracula-pink transition">StudyQuest</h3>
-                        <p class="text-sm text-dracula-comment leading-relaxed">
-                            Plataforma em desenvolvimento voltada para a preparação prática de alunos para olimpíadas científicas (OBIFEP, OBA, OBMEP, etc.), organizando questões, cronogramas e progresso de estudo.
-                        </p>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span class="text-[11px] font-code px-2 py-0.5 bg-dracula-bg text-dracula-yellow rounded">Python</span>
-                            <span class="text-[11px] font-code px-2 py-0.5 bg-dracula-bg text-dracula-orange rounded">HTML/CSS</span>
-                            <span class="text-[11px] font-code px-2 py-0.5 bg-dracula-bg text-dracula-green rounded">Logic</span>
-                        </div>
-                    </div>
-                    <div class="px-6 py-4 bg-dracula-bg/60 border-t border-dracula-card flex items-center justify-between">
-                        <span class="text-xs text-dracula-comment font-code">Status: Em Progresso</span>
-                        <a href="https://github.com/eusoudg" target="_blank" class="text-xs font-code text-dracula-cyan hover:underline flex items-center gap-1">
-                            Ver detalhes <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 2: GitHub Snake & Portfolio -->
-                <div class="bg-dracula-card/40 border border-dracula-card hover:border-dracula-green rounded-xl overflow-hidden flex flex-col justify-between transition group">
-                    <div class="p-6 space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-code text-dracula-green bg-dracula-green/10 px-2.5 py-1 rounded-md border border-dracula-green/30">Perfil & Automação</span>
-                            <i data-lucide="bot" class="w-5 h-5 text-dracula-green"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-dracula-fg group-hover:text-dracula-green transition">Pixel Snake & Custom Profile</h3>
-                        <p class="text-sm text-dracula-comment leading-relaxed">
-                            Configuração de GitHub Actions (`snake.yml`) para gerar a animação interativa da cobra que devora contribuições no perfil do GitHub, integrada com design customizado Scott Pilgrim.
-                        </p>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span class="text-[11px] font-code px-2 py-0.5 bg-dracula-bg text-dracula-purple rounded">GitHub Actions</span>
-                            <span class="text-[11px] font-code px-2 py-0.5 bg-dracula-bg text-dracula-cyan rounded">YAML</span>
-                            <span class="text-[11px] font-code px-2 py-0.5 bg-dracula-bg text-dracula-pink rounded">Markdown</span>
-                        </div>
-                    </div>
-                    <div class="px-6 py-4 bg-dracula-bg/60 border-t border-dracula-card flex items-center justify-between">
-                        <span class="text-xs text-dracula-comment font-code">Status: Concluído</span>
-                        <a href="https://github.com/eusoudg/eusoudg" target="_blank" class="text-xs font-code text-dracula-green hover:underline flex items-center gap-1">
-                            Ver Repositório <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section id="terminal" class="space-y-4">
-            <div class="flex items-center gap-3 border-b border-dracula-card pb-3">
-                <i data-lucide="terminal" class="w-6 h-6 text-dracula-yellow"></i>
-                <h2 class="text-2xl font-bold font-code text-dracula-fg">Terminal Interativo</h2>
-            </div>
-
-            <div class="bg-dracula-bg border-2 border-dracula-card rounded-xl overflow-hidden shadow-2xl font-code text-xs md:text-sm">
-                <!-- Terminal Header Bar -->
-                <div class="bg-dracula-card px-4 py-2 flex items-center justify-between border-b border-dracula-comment/30">
-                    <div class="flex items-center gap-2">
-                        <span class="w-3 h-3 rounded-full bg-dracula-red inline-block"></span>
-                        <span class="w-3 h-3 rounded-full bg-dracula-yellow inline-block"></span>
-                        <span class="w-3 h-3 rounded-full bg-dracula-green inline-block"></span>
-                        <span class="ml-2 text-xs text-dracula-comment">bash - eusoudg@github:~</span>
-                    </div>
-                    <span class="text-[10px] text-dracula-comment">Digite <span class="text-dracula-yellow">help</span></span>
-                </div>
-
-                <!-- Terminal Body -->
-                <div id="terminalBody" class="p-4 h-64 overflow-y-auto space-y-2 text-dracula-fg">
-                    <div>
-                        <span class="text-dracula-green">eusoudg@portfolio</span>:<span class="text-dracula-purple">~</span>$ echo "Bem-vindo ao terminal de Diogo (DG)!"
-                        <p class="text-dracula-comment mt-1">Digite <span class="text-dracula-yellow">help</span> para ver a lista de comandos disponíveis.</p>
-                    </div>
-                </div>
-
-                <!-- Terminal Input Line -->
-                <form id="terminalForm" class="p-3 bg-dracula-card/30 border-t border-dracula-card flex items-center gap-2">
-                    <span class="text-dracula-green">eusoudg@portfolio</span>:<span class="text-dracula-purple">~</span>$
-                    <input type="text" id="terminalInput" autocomplete="off" class="flex-1 bg-transparent text-dracula-yellow focus:outline-none font-code text-xs md:text-sm" placeholder="digite aqui...">
-                </form>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="border-t border-dracula-card bg-dracula-bg mt-16 py-8 font-code text-xs text-dracula-comment">
-        <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-2">
-                <span class="text-dracula-purple font-bold">Diogo (eusoudg)</span>
-                <span>•</span>
-                <span>2026</span>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <a href="https://github.com/eusoudg" target="_blank" class="hover:text-dracula-cyan transition flex items-center gap-1">
-                    <i data-lucide="github" class="w-4 h-4"></i> GitHub
-                </a>
-                <a href="https://instagram.com" target="_blank" class="hover:text-dracula-pink transition flex items-center gap-1">
-                    <i data-lucide="instagram" class="w-4 h-4"></i> Instagram
-                </a>
-                <a href="mailto:seuemail@gmail.com" class="hover:text-dracula-yellow transition flex items-center gap-1">
-                    <i data-lucide="mail" class="w-4 h-4"></i> Email
-                </a>
-            </div>
+      </div>
+      <div class="pixel-avatar-wrapper">
+        <img src="https://github.com/user-attachments/assets/effc35e5-685e-4a96-a33d-99353fb4ab7d" alt="Pixel Avatar" class="pixel-avatar">
+        <div class="status-badge">
+          <span class="dot"></span> Online
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
+    <!-- Terminal / About Section -->
+    <section id="about">
+      <div class="section-title">01. SOBRE_MIM</div>
+      <div class="terminal-card">
+        <div class="terminal-header">
+          <div class="btn-circle btn-red"></div>
+          <div class="btn-circle btn-yellow"></div>
+          <div class="btn-circle btn-green"></div>
+          <div class="terminal-title">bash - diogo@dev:~</div>
+        </div>
+        <div class="terminal-body">
+          <div class="term-line">
+            <span class="term-prompt">diogo@dev</span>:<span class="term-path">~</span>$ cat whoami.txt
+          </div>
+          <div class="term-out term-line">
+            Estudante do curso técnico em Informática no IFPI Campus Picos, apaixonado por tecnologia, desenvolvimento web e lógica de programação.
+          </div>
+          <div class="term-line">
+            <span class="term-prompt">diogo@dev</span>:<span class="term-path">~</span>$ fetch --interests
+          </div>
+          <div class="term-out term-line">
+            <ul class="term-list">
+              <li>Linguagens: Python, C, HTML5, CSS3, JavaScript</li>
+              <li>Interesses: Programação, Literatura Clássica, Xadrez, Graphic Design</li>
+              <li>Projetos: Aplicações Web, Automações e Projetos Académicos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        // 1. Scanlines Retro Effect Toggle
-        const toggleScanlinesBtn = document.getElementById('toggleScanlines');
-        const scanlineOverlay = document.getElementById('scanlineOverlay');
+    <!-- Skills Section -->
+    <section id="skills">
+      <div class="section-title">02. HABILIDADES</div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <span class="skill-icon">🐍</span>
+          <div class="skill-name">Python</div>
+        </div>
+        <div class="skill-card">
+          <span class="skill-icon">⚡</span>
+          <div class="skill-name">C</div>
+        </div>
+        <div class="skill-card">
+          <span class="skill-icon">🌐</span>
+          <div class="skill-name">HTML5</div>
+        </div>
+        <div class="skill-card">
+          <span class="skill-icon">🎨</span>
+          <div class="skill-name">CSS3</div>
+        </div>
+        <div class="skill-card">
+          <span class="skill-icon">🌱</span>
+          <div class="skill-name">Git & GitHub</div>
+        </div>
+      </div>
+    </section>
 
-        toggleScanlinesBtn.addEventListener('click', () => {
-            scanlineOverlay.classList.toggle('hidden');
-        });
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="section-title">03. PROJETOS_RECENTES</div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div>
+            <div class="project-title">
+              <span>StudyQuest</span>
+              <span>🚀</span>
+            </div>
+            <p class="project-desc">Aplicação web desenvolvida para auxiliar estudantes na preparação para olimpíadas científicas e competições académicas.</p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </div>
 
-        // 2. Typewriter Effect
-        const phrases = [
-            "Estudante de Ciência da Computação",
-            "Entusiasta de C & Python",
-            "Scott Pilgrim Vibe & Pixel Art"
-        ];
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typewriterEl = document.getElementById('typewriterText');
+        <div class="project-card">
+          <div>
+            <div class="project-title">
+              <span>O Gambito da Timidez</span>
+              <span>📜</span>
+            </div>
+            <p class="project-desc">Obra premiada em 1º lugar no concurso literário regional da Academia de Letras da Região de Picos (ALERP).</p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Literatura</span>
+            <span class="tag">Poesia</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        function typeLoop() {
-            const currentPhrase = phrases[phraseIndex];
-            
-            if (isDeleting) {
-                typewriterEl.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typewriterEl.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
-            }
+    <!-- Contribution Activity Section -->
+    <section id="activity">
+      <div class="section-title">04. CONTRIBUIÇÕES</div>
+      <div class="snake-box">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/eusoudg/eusoudg/output/github-contribution-grid-snake-dark.svg">
+          <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/eusoudg/eusoudg/output/github-contribution-grid-snake.svg">
+          <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/eusoudg/eusoudg/output/github-contribution-grid-snake.svg">
+        </picture>
+      </div>
+    </section>
 
-            let typeSpeed = isDeleting ? 40 : 80;
+  </main>
 
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                typeSpeed = 2000; // Pause at end
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                typeSpeed = 500;
-            }
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="social-links">
+        <a href="https://github.com/eusoudg" target="_blank" title="GitHub">💻 GitHub</a>
+      </div>
+      <p>Desenvolvido por Diogo Ryan • eusoudg</p>
+    </div>
+  </footer>
 
-            setTimeout(typeLoop, typeSpeed);
-        }
+  <!-- Script Efeito Digitação -->
+  <script>
+    const phrases = [
+      "Desenvolvedor em Formação...",
+      "Entusiasta de Python & C",
+      "Estudante no IFPI Picos",
+      "Sempre a criar algo novo!"
+    ];
+    let count = 0;
+    let index = 0;
+    let currentText = '';
+    let letter = '';
+    let isDeleting = false;
 
-        document.addEventListener('DOMContentLoaded', typeLoop);
+    function type() {
+      if (count === phrases.length) {
+        count = 0;
+      }
+      currentText = phrases[count];
 
-        // 3. Skill Filter Logic
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const skillCards = document.querySelectorAll('.skill-card');
+      if (isDeleting) {
+        letter = currentText.slice(0, --index);
+      } else {
+        letter = currentText.slice(0, ++index);
+      }
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const filter = btn.getAttribute('data-filter');
+      document.getElementById('typewriter').textContent = letter + '|';
 
-                filterBtns.forEach(b => {
-                    b.classList.remove('bg-dracula-purple', 'text-dracula-bg', 'font-semibold');
-                    b.classList.add('bg-dracula-bg', 'text-dracula-comment');
-                });
+      let typeSpeed = 100;
+      if (isDeleting) typeSpeed /= 2;
 
-                btn.classList.remove('bg-dracula-bg', 'text-dracula-comment');
-                btn.classList.add('bg-dracula-purple', 'text-dracula-bg', 'font-semibold');
+      if (!isDeleting && letter.length === currentText.length) {
+        typeSpeed = 1500;
+        isDeleting = true;
+      } else if (isDeleting && letter.length === 0) {
+        isDeleting = false;
+        count++;
+        typeSpeed = 400;
+      }
 
-                skillCards.forEach(card => {
-                    if (filter === 'all' || card.classList.contains(filter)) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
+      setTimeout(type, typeSpeed);
+    }
 
-        // 4. Interactive Terminal
-        const terminalForm = document.getElementById('terminalForm');
-        const terminalInput = document.getElementById('terminalInput');
-        const terminalBody = document.getElementById('terminalBody');
-
-        const commands = {
-            'help': 'Comandos disponíveis: <span class="text-dracula-cyan">about</span>, <span class="text-dracula-cyan">skills</span>, <span class="text-dracula-cyan">projects</span>, <span class="text-dracula-cyan">quote</span>, <span class="text-dracula-cyan">clear</span>',
-            'about': 'Diogo (DG) - Estudante de TI focado em C, Python, Web Dev e raciocínio lógico.',
-            'skills': 'Linguagens: Python, C, HTML5 | Ferramentas: Git, GitHub, VS Code',
-            'projects': '1. StudyQuest (Preparação Olímpica)\n2. Pixel Snake Profile (GitHub Actions)',
-            'quote': '"Conhecereis a verdade, e a verdade vos libertará" (João 8:32)'
-        };
-
-        terminalForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const inputVal = terminalInput.value.trim().toLowerCase();
-
-            if (!inputVal) return;
-
-            // Echo command
-            const userLine = document.createElement('div');
-            userLine.innerHTML = `<span class="text-dracula-green">eusoudg@portfolio</span>:<span class="text-dracula-purple">~</span>$ ${inputVal}`;
-            terminalBody.appendChild(userLine);
-
-            if (inputVal === 'clear') {
-                terminalBody.innerHTML = '';
-            } else if (commands[inputVal]) {
-                const responseLine = document.createElement('div');
-                responseLine.className = 'text-dracula-comment whitespace-pre-line';
-                responseLine.innerHTML = commands[inputVal];
-                terminalBody.appendChild(responseLine);
-            } else {
-                const errorLine = document.createElement('div');
-                errorLine.className = 'text-dracula-red';
-                errorLine.textContent = `Comando não encontrado: "${inputVal}". Digite 'help' para comandos.`;
-                terminalBody.appendChild(errorLine);
-            }
-
-            terminalInput.value = '';
-            terminalBody.scrollTop = terminalBody.scrollHeight;
-        });
-    </script>
+    document.addEventListener("DOMContentLoaded", () => {
+      type();
+    });
+  </script>
 </body>
 </html>
