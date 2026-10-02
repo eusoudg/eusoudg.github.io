@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diogo | eusoudg</title>
+  <title>Diogo Ryan | eusoudg</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Press+Start+2P&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -39,14 +39,12 @@
       overflow-x: hidden;
     }
 
-    /* Container */
     .container {
       max-width: 900px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
-    /* Header & Nav */
     header {
       background-color: rgba(22, 27, 34, 0.85);
       backdrop-filter: blur(8px);
@@ -95,7 +93,6 @@
       color: var(--accent-cyan);
     }
 
-    /* Hero Section */
     .hero {
       padding: 60px 0 40px;
       display: flex;
@@ -188,7 +185,6 @@
       font-size: 0.9rem;
     }
 
-    /* Section Global */
     section {
       padding: 40px 0;
       border-bottom: 1px solid var(--border-color);
@@ -211,7 +207,6 @@
       background: var(--border-color);
     }
 
-    /* Terminal Section */
     .terminal-card {
       background-color: #090d12;
       border: 1px solid var(--border-color);
@@ -240,7 +235,7 @@
     .btn-green { background: #27c93f; }
 
     .terminal-title {
-      margin-left: Auto;
+      margin-left: auto;
       margin-right: auto;
       font-family: var(--font-code);
       font-size: 0.75rem;
@@ -285,7 +280,6 @@
       color: var(--accent-cyan);
     }
 
-    /* Skills Grid */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -318,7 +312,6 @@
       color: var(--heading-color);
     }
 
-    /* Projects Cards */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -371,7 +364,6 @@
       border: 1px solid rgba(56, 189, 248, 0.2);
     }
 
-    /* Contribution Snake Section */
     .snake-box {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
@@ -386,7 +378,6 @@
       height: auto;
     }
 
-    /* Footer */
     footer {
       padding-top: 40px;
       text-align: center;
@@ -413,7 +404,6 @@
       color: var(--accent-pink);
     }
 
-    /* Responsive */
     @media (max-width: 600px) {
       .hero {
         flex-direction: column-reverse;
@@ -430,7 +420,6 @@
 </head>
 <body>
 
-  <!-- Header / Navigation -->
   <header>
     <div class="container nav-wrapper">
       <a href="#" class="logo">&lt;eusoudg <span>/&gt;</span></a>
@@ -445,7 +434,6 @@
 
   <main class="container">
 
-    <!-- Hero Section -->
     <section class="hero">
       <div class="hero-content">
         <div class="title-tag">console.log("Olá, mundo!");</div>
@@ -463,7 +451,6 @@
       </div>
     </section>
 
-    <!-- Terminal / About Section -->
     <section id="about">
       <div class="section-title">01. SOBRE_MIM</div>
       <div class="terminal-card">
@@ -486,7 +473,7 @@
           <div class="term-out term-line">
             <ul class="term-list">
               <li>Linguagens: Python, C, HTML5, CSS3, JavaScript</li>
-              <li>Interesses: Programação, Literatura Clássica, Xadrez, Graphic Design</li>
+              <li>Interesses: Programação, Literatura Clássica, Graphic Design</li>
               <li>Projetos: Aplicações Web, Automações e Projetos Académicos</li>
             </ul>
           </div>
@@ -494,7 +481,6 @@
       </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills">
       <div class="section-title">02. HABILIDADES</div>
       <div class="skills-grid">
@@ -521,7 +507,6 @@
       </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects">
       <div class="section-title">03. PROJETOS_RECENTES</div>
       <div class="projects-grid">
@@ -556,7 +541,6 @@
       </div>
     </section>
 
-    <!-- Contribution Activity Section -->
     <section id="activity">
       <div class="section-title">04. CONTRIBUIÇÕES</div>
       <div class="snake-box">
@@ -570,7 +554,6 @@
 
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="container">
       <div class="social-links">
@@ -580,7 +563,6 @@
     </div>
   </footer>
 
-  <!-- Script Efeito Digitação -->
   <script>
     const phrases = [
       "Desenvolvedor em Formação...",
